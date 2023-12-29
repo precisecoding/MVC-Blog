@@ -1,0 +1,14 @@
+[
+    {
+        "comment": "sample comment data one",
+        "post_id": 1
+    },
+    {
+        "comment": "sample comment data two",
+        "post_id": 2
+    },
+    {
+        "comment": "sample comment data three",
+        "post_id": 3
+    }
+]

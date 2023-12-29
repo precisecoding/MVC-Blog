@@ -1,0 +1,62 @@
+<!-- Loop over each object in the posts array -->
+{{!--jass.css utilization --}}
+<div class="row mb-4 project">
+    <div class="col-md-5">
+        <h2>
+            {{title}}
+        </h2>
+        {{!-- format_date before date_created built in method to properly format generated date --}}
+        <p>Created by {{user.username}} on {{format_date date_created}}</p>
+    </div>
+    <div class="col-md-7">
+        <p>
+            {{contents}}
+        </p>
+    </div>
+    
+    {{!-- loop over data from user post.comments can see in insomnia the array of objects, selects only to render data
+    associated with comments from the for loop then |comment| selects only the first comment of the for loop to render.
+    The foor loop allows to return multiple or all of the values. To return singular values from the array of objects
+    post.comment[1] handlebars may or may not support this, javascript can so conditionals and singular returns may
+    require javascript --}}
+    <div class="row mb-4 project text-center w-100">
+        <div class="col-12">
+            <h2>
+                Comments:
+            </h2>
+        </div>
+        <div class="row w-100">
+            <div class="col mx-auto">
+                {{#each comments as |comment| }}
+                <div class="card p-2">
+                    <div class="col">
+                        <p>Created by {{comment.user.username}} on {{format_date comment.date_created}}</p>
+                    </div>
+                    <div class="col">
+                        <p>
+                            {{comment.comment}}
+                        </p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <div class="new-comment text-center mx-auto">
+        <h2>
+            Add a new comment
+        </h2>
+        <div class="new-comment-form">
+            <form id="comment-form" class="text-center">
+                <div class="form-group">
+                    <label for="comment" class="display-block">Your Comment</label>
+                    {{!-- hidden element will store the submited users id data --}}
+                    <input type="hidden" id="post-id" value="{{id}}">
+                    <textarea class="form-control display-block w-100" id="comment" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Comment</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/js/comment.js"></script>

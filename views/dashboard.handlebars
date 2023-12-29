@@ -1,0 +1,59 @@
+{{#if logged_in}}
+<!-- Loop over each object in the posts array -->
+{{#each posts as |post| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{{get_emoji}}}
+      <a href="/post/{{post.id}}">{{post.title}}</a>
+    </h2>
+    {{!-- format_date before post.date_created built in method to properly format generated date --}}
+    <p>Created by {{post.user.username}} on {{format_date post.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{post.contents}}
+    </p>
+  </div>
+  <div class="col">
+    {{!-- use these for the for loop allows for dynamic delete delete and update put --}}
+    <button class="update" value="{{post.id}}">Update</button>
+    <button class="delete" value="{{post.id}}">Delete</button>
+  </div>
+</div>
+{{/each}}
+{{!-- update --}}
+<div class="new-update-form">
+  <form id="update-form" class="text-center">
+    <div class="form-group">
+      <label for="update-title" class="display-block">Title</label>
+      <input class="form-control display-block w-100" id="update-title">
+    </div>
+    <div class="form-group">
+      <label for="update-description" class="display-block">Description</label>
+      <textarea class="form-control display-block w-100" id="update-description" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+<div class="new-post text-center mx-auto">
+  <button id="post-btn">
+    Add a new post
+  </button>
+  <div class="new-post-form">
+    <form id="post-form" class="text-center">
+      <div class="form-group">
+        <label for="title" class="display-block">Title</label>
+        <input class="form-control display-block w-100" id="title">
+      </div>
+      <div class="form-group">
+        <label for="description" class="display-block">Description</label>
+        <textarea class="form-control display-block w-100" id="description" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Post</button>
+    </form>
+  </div>
+</div>
+<script src="/js/post.js"></script>
+{{/if}}

@@ -1,0 +1,22 @@
+ {{#if logged_in}}
+ <h1>Posts</h1>
+<!-- Loop over each object in the posts array -->
+{{#each posts as |post| }}
+<div class="row mb-4 project">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+      {{{get_emoji}}}
+      <a href="/post/{{post.id}}">{{post.title}}</a>
+    </h2>
+  {{!-- format_date before post.date_created built in method to properly format generated date --}}
+    <p>Created by {{post.user.username}} on {{format_date post.date_created}}</p> 
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{post.contents}}
+    </p>
+  </div>
+</div>
+{{/each}}
+{{/if}}
