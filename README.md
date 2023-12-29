@@ -54,7 +54,7 @@ THEN I am able to view posts and comments but I am prompted to log in again befo
 
 ## Mock-Up
 
-![Screenshot.](./Assets/14-mvc-homework-demo-01.gif) 
+![Screenshot.](./Assets/mvcscreenshot.png)
 
 ## Motivation
 
