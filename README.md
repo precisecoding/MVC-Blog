@@ -88,6 +88,8 @@ This signht is for anyone who wants to post their thoughts and opinions.
 
 <>
 
+![Screenshot.](./Assets/renderfailnomysqlsupport.png)
+
 ### License
 
 MIT License:
